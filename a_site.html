@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        .all{
+            padding: 0 80px;
+            height: 100vh;
+        }
+        /* header */
+        .headerS{
+            height: 87px;
+            padding: 0; 
+            max-width: 1360px;
+        }
+        .logo{
+            background: url(//static.knigavuhe.org/images/darklogo_web@2x.png) center center no-repeat;
+            display: block;
+            background-size: 160px 40px;
+            height: 72px;
+            width: 160px;
+            float: left;
+        }
+        .men{
+            height: 50px;
+            color: #fff;
+            float: right;
+            display: flex;
+            gap: 4px;
+            margin-top: 22px;
+            margin-left: 160px;
+            width: auto;
+        }
+        .icon{
+            font-weight: 700;
+            min-height: 40px;
+            min-width: 30px;
+            gap: 2px;
+            display: flex;
+            font-variation-settings:"wdth" 92.5;
+            align-items: flex-start;
+            margin: 0 0 0 5px;
+            padding: 0 10px 0 5px;
+        }
+        .iconB{
+            /* border: solid; */
+            padding: 0;
+        }
+        .icT{
+            width: 40px;
+            position: relative;
+            bottom: 8px;
+            margin-left: 19.5px;
+        }
+        .i{
+            margin: 0 7px;
+        }
+        #dr{
+            position: relative;
+            bottom: 2px;
+        }
+        /* body */
+        .bodyS{
+            width: 100%;
+            color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            padding-bottom: 50px;
+        }
+        /* left */
+        .player{
+            width: 275px;
+            margin-right: 40px;
+        }
+        #ap{
+            position: sticky;
+            top: 0;
+            width: fit-content;
+        }
+        .bord,.play,.play_i,.btm{
+            border-radius: 4px;
+        }
+        .play_i{
+            margin: 10px 0;
+            background-color: #2f363a;
+            width: 255px;
+            padding: 8px;
+            height: 40px;
+            display: flex;
+        }
+        .play{
+            height: 40px;
+            width: 40px;
+            background-color: #4eabed;
+            border: 0px;
+        }
+        .time{
+            display: inline-block;
+            border: 1px solid #4e595f;
+            border-radius: 8px;
+            margin: 0 35px;
+            padding: 4px 8px;
+        }
+        .j{
+            position:relative;
+            top: 2px;
+            margin-right: 5px;
+        }
+        .pl_menu{
+            display: inline-block;
+            position: relative;
+        }
+        .pl_l{
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjY2NiA3YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaDEwYS44MzMuODMzIDAgMSAxIDAgMS42NjZoLTEwQS44MzMuODMzIDAgMCAxIDguNjY2IDdaTTQuNSA3YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaC44MzRhLjgzMy44MzMgMCAwIDEgMCAxLjY2NmgtLjgzNEEuODMzLjgzMyAwIDAgMSA0LjUgN1ptMCA1YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaC44MzRhLjgzMy44MzMgMCAwIDEgMCAxLjY2NmgtLjgzNEEuODMzLjgzMyAwIDAgMSA0LjUgMTJabTAgNWMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM2guODM0YS44MzMuODMzIDAgMCAxIDAgMS42NjZoLS44MzRBLjgzMy44MzMgMCAwIDEgNC41IDE3Wm00LjE2Ni01YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaDEwYS44MzMuODMzIDAgMSAxIDAgMS42NjZoLTEwQS44MzMuODMzIDAgMCAxIDguNjY2IDEyWm0wIDVjMC0uNDYuMzczLS44MzMuODMzLS44MzNoMTBhLjgzMy44MzMgMCAxIDEgMCAxLjY2NmgtMTBBLjgzMy44MzMgMCAwIDEgOC42NjYgMTdaIiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==');
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+        }
+        .pl_l:hover{
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM0ZWFiZWQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjY2NiA3YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaDEwYS44MzMuODMzIDAgMSAxIDAgMS42NjZoLTEwQS44MzMuODMzIDAgMCAxIDguNjY2IDdaTTQuNSA3YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaC44MzRhLjgzMy44MzMgMCAwIDEgMCAxLjY2NmgtLjgzNEEuODMzLjgzMyAwIDAgMSA0LjUgN1ptMCA1YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaC44MzRhLjgzMy44MzMgMCAwIDEgMCAxLjY2NmgtLjgzNEEuODMzLjgzMyAwIDAgMSA0LjUgMTJabTAgNWMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM2guODM0YS44MzMuODMzIDAgMCAxIDAgMS42NjZoLS44MzRBLjgzMy44MzMgMCAwIDEgNC41IDE3Wm00LjE2Ni01YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaDEwYS44MzMuODMzIDAgMSAxIDAgMS42NjZoLTEwQS44MzMuODMzIDAgMCAxIDguNjY2IDEyWm0wIDVjMC0uNDYuMzczLS44MzMuODMzLS44MzNoMTBhLjgzMy44MzMgMCAxIDEgMCAxLjY2NmgtMTBBLjgzMy44MzMgMCAwIDEgOC42NjYgMTdaIiBmaWxsPSIjNGVhYmVkIiAvPjwvc3ZnPg==');
+        }
+        /* center */
+        .info{
+            max-width: 759px;
+            min-width: 350px;
+        }
+        .iconBody{
+            display: flex;
+            align-items: flex-start;
+            margin-top: 14px;
+        }
+        .tx{
+            font-size: 16.5px;
+            margin-top: 20px;
+        }
+        .bll{
+            margin: 36px 0 24px;
+            width: 40px;
+            height: 40px;
+        }
+        .comm_e{
+            max-height: 80px;
+            width: 100%;
+            background-color: #2f363a;
+            text-align: center;  
+            padding: 32px 16px;
+        }
+        .comm_sw{
+            display: flex;
+            gap: 15px;
+            margin-top: 24px;
+        }
+        .comm{
+            margin-top: 34px;
+            display: flex;
+            gap: 15px;
+        }
+        .c_text{
+            padding: 3px 0 6px;
+        }
+        .av{
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+        }
+        /* right */
+        .rMeny{
+            background-color: #222;
+            width: 265px;
+            min-height: 100%;
+            margin-top: 26px;
+            padding-left: 16px;
+        }
+        .btms{
+            display: grid;
+            grid-template-columns: 53% 23.5% 23%;
+            grid-template-rows: 55px auto;
+            grid-auto-flow: row;
+            height: 75px;
+            width: 100%;
+            gap: 5px;
+        }
+        .btm{
+            background-color: #2f363a;
+        }
+        .btm:hover{
+            background-color: #6d7e87
+        }
+        .rec{
+            display: grid;
+            grid-template-columns: 25% 70%;
+            grid-template-rows: repeat(4 25%);
+            width: 282px;
+            gap: 18px 0;
+            padding-left: 16px;
+            font-size: 14px;
+        }
+        .bT{
+            color: #fff;
+        }
+        .bt:hover{
+            color: #4eabed;
+        }
+        .add{
+            width: 218px;
+            min-height: 400px;
+            background-color: #2f363a;
+            margin-left: 32px;
+            margin-top: 30px;
+            position: sticky;
+            top: 24px;
+        }
+        .b_rm{
+            color: #99a9ba; 
+            font-size: 13px; 
+            font-weight: 400;
+        }
+        .backb{
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        /* bottom */
+        .footerS{ 
+            max-height: 58.4px;
+            background-color: #2f363a;
+            margin-right: 16px;
+            border-radius: 8px;
+            padding: 19px 24px;
+            margin-bottom: 20px;
+            font-weight: 450;
+        }
+        .f_menu{
+            float: right;
+            display: flex;
+        }
+        /* changes */
+        body{
+            background-color: #222;
+            font-family: "Open Sans", sans-serif;
+            font-size: 15px;
+        }
+        a{
+            color: #4eabed;
+            font-weight: 700;
+        }
+        h1{
+            font-size: 32.5px;
+        }
+        h3{
+            margin: 30px 0 22px;
+            font-size: 23px;
+        }
+        /* div{
+            border: solid;
+        } */
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="headerS">
+            <a href="" class="logo"></a>
+            <div class="men">
+                <div class="iconB icon"><img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAzLjk4MmE4LjAxOCA4LjAxOCAwIDEgMCAwIDE2LjAzNiA4LjAxOCA4LjAxOCAwIDAgMCAwLTE2LjAzNlpNMiAxMkMyIDYuNDc3IDYuNDc3IDIgMTIgMnMxMCA0LjQ3NyAxMCAxMC00LjQ3NyAxMC0xMCAxMFMyIDE3LjUyMyAyIDEyWiIgZmlsbD0iIzk5QTlCQSIgLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjA2NSA2Yy41ODcgMCAxLjA2NC40MzUgMS4wNjQuOTd2NC42OTVsMy4yODIgMS40OTZjLjUyNi4yNC43NC44MjMuNDc2IDEuMzAyLS4yNjIuNDgtLjkwMi42NzQtMS40MjguNDM0bC0zLjg3LTEuNzY0Yy0uMzYxLS4xNjUtLjU4OS0uNS0uNTg5LS44NjhWNi45N2MwLS41MzYuNDc3LS45NzEgMS4wNjUtLjk3MVoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt=""></div>
+                <div class="iconB icon"><img class="i" id="dr" height="28px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOCAxOCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjM2IiBmaWxsPSIjOTlBOUJBIj48ZyBzdHlsZT0iaXNvbGF0aW9uOmlzb2xhdGUiIGZpbGw9IiM5OUE5QkEiPjxwYXRoIGQ9Ik0xNC41NCAxMC4zN2E1LjQgNS40IDAgMCAxLTYuOTEtNi45MS41OS41OSAwIDAgMC0uNzQtLjc1IDYuNjYgNi42NiAwIDAgMC0yLjQ3IDEuNTQgNi42IDYuNiAwIDEgMCAxMC44NyA2Ljg2LjU5LjU5IDAgMCAwLS43NS0uNzRabTMtNC4yOUgxN3YtMi41YTMuNDcgMy40NyAwIDAgMC0uMTMtMS4zNiAxLjI0IDEuMjQgMCAwIDAtLjU1LS41NkEzIDMgMCAwIDAgMTUgMS41MmgtM2EzIDMgMCAwIDAtMS4zMS4xNCAxLjI3IDEuMjcgMCAwIDAtLjU0LjU2QTMuMjQgMy4yNCAwIDAgMCAxMCAzLjU4djIuNWgtLjUxYy0uMjUgMC0uNDUuMy0uNDUuNTZhLjQ2LjQ2IDAgMCAwIC4yOC40M2wuNTkuMjQuMjEuMDlhMS44NiAxLjg2IDAgMCAwIC4zNC4wNmg2LjExbC4zMy0uMDYuMjEtLjA5LjU5LS4yNGEuNDYuNDYgMCAwIDAgLjMtLjQzYzAtLjI2LS4yMS0uNTYtLjQ2LS41NlptLTEuNDYgMEgxMVYzLjc2QTcuMTEgNy4xMSAwIDAgMSAxMSAzdi0uMjFhLjQ1LjQ1IDAgMCAxIC4yLS4yMXMwIDAgLjIgMGg0LjQxYS41My41MyAwIDAgMSAuMjEuMjEgMS4zIDEuMyAwIDAgMSAwIC4yMXYuNzRaIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQiIGRhdGEtbmFtZT0iSW1hZ2XCoDYiIGZpbGw9IiM5OUE5QkEiIC8+PC9nPjwvc3ZnPg==" alt=""></div>
+                <div class="icon">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iIzk5QTlCQSI+PHBhdGggc3R5bGU9ImNvbG9yOiMwMDA7Zm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDo0MDA7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6bWVkaXVtO2xpbmUtaGVpZ2h0Om5vcm1hbDtmb250LWZhbWlseTpzYW5zLXNlcmlmO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1wb3NpdGlvbjpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtYWx0ZXJuYXRlczpub3JtYWw7Zm9udC1mZWF0dXJlLXNldHRpbmdzOm5vcm1hbDt0ZXh0LWluZGVudDowO3RleHQtYWxpZ246c3RhcnQ7dGV4dC1kZWNvcmF0aW9uOm5vbmU7dGV4dC1kZWNvcmF0aW9uLWxpbmU6bm9uZTt0ZXh0LWRlY29yYXRpb24tc3R5bGU6c29saWQ7dGV4dC1kZWNvcmF0aW9uLWNvbG9yOiMwMDA7bGV0dGVyLXNwYWNpbmc6bm9ybWFsO3dvcmQtc3BhY2luZzpub3JtYWw7dGV4dC10cmFuc2Zvcm06bm9uZTt3cml0aW5nLW1vZGU6bHItdGI7ZGlyZWN0aW9uOmx0cjt0ZXh0LW9yaWVudGF0aW9uOm1peGVkO2RvbWluYW50LWJhc2VsaW5lOmF1dG87YmFzZWxpbmUtc2hpZnQ6YmFzZWxpbmU7dGV4dC1hbmNob3I6c3RhcnQ7d2hpdGUtc3BhY2U6bm9ybWFsO3NoYXBlLXBhZGRpbmc6MDtjbGlwLXJ1bGU6bm9uemVybztkaXNwbGF5OmlubGluZTtvdmVyZmxvdzp2aXNpYmxlO3Zpc2liaWxpdHk6dmlzaWJsZTtvcGFjaXR5OjE7aXNvbGF0aW9uOmF1dG87bWl4LWJsZW5kLW1vZGU6bm9ybWFsO2NvbG9yLWludGVycG9sYXRpb246c1JHQjtjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM6bGluZWFyUkdCO3NvbGlkLWNvbG9yOiMwMDA7c29saWQtb3BhY2l0eToxO3ZlY3Rvci1lZmZlY3Q6bm9uZTtmaWxsOiNiN2MyY2U7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1kYXNob2Zmc2V0OjA7c3Ryb2tlLW9wYWNpdHk6MTtjb2xvci1yZW5kZXJpbmc6YXV0bztpbWFnZS1yZW5kZXJpbmc6YXV0bztzaGFwZS1yZW5kZXJpbmc6YXV0bzt0ZXh0LXJlbmRlcmluZzphdXRvO2VuYWJsZS1iYWNrZ3JvdW5kOmFjY3VtdWxhdGUiIGQ9Ik0xMS45NjMgMmExIDEgMCAwIDAtLjQxLjEwNWwtOSA0LjVhMSAxIDAgMCAwIDAgMS43OWw5IDQuNWExIDEgMCAwIDAgLjg5NCAwbDktNC41YTEgMSAwIDAgMCAwLTEuNzlsLTktNC41QTEgMSAwIDAgMCAxMS45NjMgMlpNMTIgNC4xMTcgMTguNzY0IDcuNSAxMiAxMC44ODMgNS4yMzYgNy41Wm0tOC45OCA2Ljg3N2ExIDEgMCAwIDAtLjQyNiAxLjkybDkgNGExIDEgMCAwIDAgLjgxMiAwbDktNGExIDEgMCAxIDAtLjgxMi0xLjgyOEwxMiAxNC45MDZsLTguNTk0LTMuODJhMSAxIDAgMCAwLS4zODYtLjA5MnptMCA0YTEgMSAwIDAgMC0uNDI2IDEuOTJsOSA0YTEgMSAwIDAgMCAuODEyIDBsOS00YTEgMSAwIDEgMC0uODEyLTEuODI4TDEyIDE4LjkwNmwtOC41OTQtMy44MmExIDEgMCAwIDAtLjM4Ni0uMDkyeiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">           
+                    <div>Жанры</div>
+                </div>
+                <div class="icon">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wNzcgMTIuNzU2YS44MzMuODMzIDAgMCAwIDEuMTc5IDBsMi41LTIuNWEuODMzLjgzMyAwIDAgMCAwLTEuMTc5bC01LjgzMy01LjgzM2EuODMzLjgzMyAwIDAgMC0xLjE3OSAwbC0yLjUgMi41YS44MzMuODMzIDAgMCAwIDAgMS4xNzlsNS44MzMgNS44MzN6bS00LjA2NS02LjQyMyAxLjMyMS0xLjMyMSA0LjY1NSA0LjY1NS0xLjMyMSAxLjMyMS00LjY1NS00LjY1NXoiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzMy44MzMgMCAwIDAgLjc4NS4yMmwxMi4wODMtMi45MTZhLjgzMy44MzMgMCAwIDAgLjYyMi0uNjQ3bDEuMjUtNi4yNWEuODM0LjgzNCAwIDAgMC0uMjI4LS43NTJsLTQuMTY3LTQuMTY3YS44MzMuODMzIDAgMCAwLS43NTItLjIyOGwtNi4yNSAxLjI1YS44MzMuODMzIDAgMCAwLS42NDcuNjIyTDMuMDIzIDE5Ljk3YS44MzMuODMzIDAgMCAwIC4yMjEuNzg1em0xLjcyLTEuNzIgMi40NzEtMTAuMjQgNS4yOTEtMS4wNTggMy41MzYgMy41MzYtMS4wNTggNS4yOS0xMC4yNCAyLjQ3M3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzNS44MzUgMCAwIDAgMS4xOCAwbDYuMzMyLTYuMzMxYS44MzUuODM1IDAgMCAwLTEuMTgtMS4xOGwtNi4zMzIgNi4zM2EuODM1LjgzNSAwIDAgMCAwIDEuMTh6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNSAxMy4zMzNhLjgzMy44MzMgMCAxIDEgMC0xLjY2Ni44MzMuODMzIDAgMCAxIDAgMS42NjZ6TTkgMTIuNWEyLjUgMi41IDAgMSAwIDUgMCAyLjUgMi41IDAgMCAwLTUgMHoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                    <div>Авторы</div>
+                </div>
+                <div class="icon">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                    <div>Исполнители</div>          
+                </div>
+                <div class="icT">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="20" fill="#2F363A"/>
+                        <path fill="#A1B9C7" d="M19.9997 20C22.9463 20 25.333 17.6134 25.333 14.6667C25.333 11.72 22.9463 9.33337 19.9997 9.33337C17.053 9.33337 14.6663 11.72 14.6663 14.6667C14.6663 17.6134 17.053 20 19.9997 20ZM19.9997 22.6667C16.4397 22.6667 9.33301 24.4534 9.33301 28V30.6667H30.6663V28C30.6663 24.4534 23.5597 22.6667 19.9997 22.6667Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="bodyS">
+            <div class="player">
+                <div id="ap">
+                    <img class="bord" style="margin-top: 25px;" height="270" width="270" src="https://k9.knigavuhe.org/2/covers/43184/1-4@2x.jpg?1" alt="">
+                    <div class="play_i">
+                        <button class="play">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiMyMTIxMjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2EpIiBmaWxsPSIjMjEyMTIxIj48cGF0aCBkPSJNNiA0Ljc0MWExIDEgMCAwIDEgMS41MDQtLjg2NGw5LjAxNSA1LjI2YTEgMSAwIDAgMSAwIDEuNzI3bC05LjAxNSA1LjI1OUExIDEgMCAwIDEgNiAxNS4yNTlWNC43NDFaIiBmaWxsPSIjMjEyMTIxIiAvPjwvZz48ZGVmcyBmaWxsPSIjMjEyMTIxIj48Y2xpcFBhdGggaWQ9ImEiIGZpbGw9IiMyMTIxMjEiPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMFYwWiIgZmlsbD0iIzIxMjEyMSIgLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=" alt="">
+                        </button>
+                        <div class="time"><img class="j" height="18px" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAzLjk4MmE4LjAxOCA4LjAxOCAwIDEgMCAwIDE2LjAzNiA4LjAxOCA4LjAxOCAwIDAgMCAwLTE2LjAzNlpNMiAxMkMyIDYuNDc3IDYuNDc3IDIgMTIgMnMxMCA0LjQ3NyAxMCAxMC00LjQ3NyAxMC0xMCAxMFMyIDE3LjUyMyAyIDEyWiIgZmlsbD0iIzk5QTlCQSIgLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjA2NSA2Yy41ODcgMCAxLjA2NC40MzUgMS4wNjQuOTd2NC42OTVsMy4yODIgMS40OTZjLjUyNi4yNC43NC44MjMuNDc2IDEuMzAyLS4yNjIuNDgtLjkwMi42NzQtMS40MjguNDM0bC0zLjg3LTEuNzY0Yy0uMzYxLS4xNjUtLjU4OS0uNS0uNTg5LS44NjhWNi45N2MwLS41MzYuNDc3LS45NzEgMS4wNjUtLjk3MVoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">09:08:49</div>
+                        <a class="pl_menu"><div class="pl_l"></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <h1>Приключение рождественского пудинга</h1>
+                <div style="display: flex; gap: 20px;">
+                    <a>Детективы, триллеры</a>
+                    <div>                        
+                        <div class="iconBody" style="margin: 0;">
+                            <img class="i" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iIzk5QTlCQSI+PHBhdGggc3R5bGU9ImxpbmUtaGVpZ2h0Om5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtcG9zaXRpb246bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWFsdGVybmF0ZXM6bm9ybWFsO2ZvbnQtZmVhdHVyZS1zZXR0aW5nczpub3JtYWw7dGV4dC1pbmRlbnQ6MDt0ZXh0LWFsaWduOnN0YXJ0O3RleHQtZGVjb3JhdGlvbi1saW5lOm5vbmU7dGV4dC1kZWNvcmF0aW9uLXN0eWxlOnNvbGlkO3RleHQtZGVjb3JhdGlvbi1jb2xvcjojMDAwO3RleHQtdHJhbnNmb3JtOm5vbmU7dGV4dC1vcmllbnRhdGlvbjptaXhlZDt3aGl0ZS1zcGFjZTpub3JtYWw7c2hhcGUtcGFkZGluZzowO2lzb2xhdGlvbjphdXRvO21peC1ibGVuZC1tb2RlOm5vcm1hbDtzb2xpZC1jb2xvcjojMDAwO3NvbGlkLW9wYWNpdHk6MSIgZD0iTTEyIDQuMzM0Yy02LjU5NSAwLTEwLjA2IDcuMjE5LTEwLjA2IDcuMjE5YTEgMSAwIDAgMCAwIC44OTRTNS40MDQgMTkuNjY2IDEyIDE5LjY2NmM2LjU5NSAwIDEwLjA2LTcuMjE5IDEwLjA2LTcuMjE5YTEgMSAwIDAgMCAwLS44OTRTMTguNTk2IDQuMzM0IDEyIDQuMzM0em0wIDJjNC43IDAgNy41MTggNC44OTggNy45NDUgNS42NjYtLjQyNy43NjgtMy4yNDQgNS42NjYtNy45NDUgNS42NjYtNC43IDAtNy41MTgtNC44OTgtNy45NDUtNS42NjYuNDI3LS43NjggMy4yNDQtNS42NjYgNy45NDUtNS42NjZ6IiBjb2xvcj0iIzAwMCIgZm9udC13ZWlnaHQ9IjQwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIG92ZXJmbG93PSJ2aXNpYmxlIiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIHN0eWxlPSJsaW5lLWhlaWdodDpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LXBvc2l0aW9uOm5vcm1hbDtmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2ZvbnQtdmFyaWFudC1hbHRlcm5hdGVzOm5vcm1hbDtmb250LWZlYXR1cmUtc2V0dGluZ3M6bm9ybWFsO3RleHQtaW5kZW50OjA7dGV4dC1hbGlnbjpzdGFydDt0ZXh0LWRlY29yYXRpb24tbGluZTpub25lO3RleHQtZGVjb3JhdGlvbi1zdHlsZTpzb2xpZDt0ZXh0LWRlY29yYXRpb24tY29sb3I6IzAwMDt0ZXh0LXRyYW5zZm9ybTpub25lO3RleHQtb3JpZW50YXRpb246bWl4ZWQ7d2hpdGUtc3BhY2U6bm9ybWFsO3NoYXBlLXBhZGRpbmc6MDtpc29sYXRpb246YXV0bzttaXgtYmxlbmQtbW9kZTpub3JtYWw7c29saWQtY29sb3I6IzAwMDtzb2xpZC1vcGFjaXR5OjEiIGQ9Ik0xMiA4LjVBMy41MTUgMy41MTUgMCAwIDAgOC41IDEyYzAgMS45MjEgMS41NzkgMy41IDMuNSAzLjVzMy41LTEuNTc5IDMuNS0zLjUtMS41NzktMy41LTMuNS0zLjV6bTAgMmMuODQgMCAxLjUuNjYgMS41IDEuNXMtLjY2IDEuNS0xLjUgMS41LTEuNS0uNjYtMS41LTEuNS42Ni0xLjUgMS41LTEuNXoiIGNvbG9yPSIjMDAwIiBmb250LXdlaWdodD0iNDAwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgb3ZlcmZsb3c9InZpc2libGUiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                            <div style="color: #99a9ba;">23 042 </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="iconBody" style="margin: 0;">
+                            <img class="i" width="25px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjQgMjQiIHhtbDpzcGFjZT0icHJlc2VydmUiIGZpbGw9IiM5OUE5QkEiPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00IDIxYy0uMyAwLS41LS4xLS43LS4zLS4zLS4zLS40LS43LS4yLTFMNC42IDE1Yy0uNS0xLjEtLjctMi4zLS43LTMuNCAwLTEuNi40LTMuMSAxLjMtNC41LjgtMS40IDItMi40IDMuNS0zLjIgMS4xLS42IDIuNC0uOSAzLjctLjloLjRjMi4yLjEgNC4yIDEgNS43IDIuNVMyMC45IDkgMjEgMTEuMXYuNWMwIDEuMy0uMyAyLjYtLjkgMy44LS43IDEuNC0xLjggMi42LTMuMiAzLjQtMS40LjgtMi45IDEuMi00LjUgMS4zLTEuMiAwLTIuMy0uMi0zLjQtLjdMNC4zIDIxSDR6bTguNC0xNmMtMSAwLTIgLjItMi45LjctMS4xLjUtMiAxLjQtMi42IDIuNC0uNiAxLTEgMi4yLTEgMy40IDAgMSAuMiAyIC43IDIuOS4xLjIuMS41LjEuOGwtMS4xIDMuMiAzLjItMS4xYy4zLS4xLjUtLjEuOC4xLjkuNSAxLjkuNyAyLjkuNyAxLjIgMCAyLjQtLjMgMy40LTEgMS0uNiAxLjktMS42IDIuNC0yLjYuNS0uOS43LTEuOS43LTIuOXYtLjRjLS4xLTEuNi0uOC0zLjEtMS45LTQuMi0xLjEtMS4yLTIuNy0xLjktNC4zLTJoLS40eiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                            <div style="color: #99a9ba;">7</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tx">Сама Агата Кристи так рекомендовала книгу своим читателям: «Этот сборник рождественских угощений можно назвать “Выбором шеф-повара”, где шеф - это я!» Сборник рассказов самого публикуемого автора всех времен и народов после Шекспира, изданный в 1960 году к Рождеству.<br />
+                    <br>
+                    Эркюль Пуаро – подлинный гений своего дела. Поэтому его постоянно привлекают к своим расследованиям высшие круги власти. Теперь маленькому бельгийцу предстоит изобличить 
+                    некую аферистку, похитившую известный на весь мир рубин у восточного принца, находящегося с визитом в Лондоне. Следы ведут в благородное поместье 
+                    Кингс-Лэйси. Сейчас все его домочадцы и их друзья собрались там, чтобы отметить Рождество и отведать традиционный английский пудинг, 
+                    подлинное украшение праздничного стола. Пуаро едет туда в качестве гостя. Но он еще не подозревает, что ему придется столкнуться с одним из самых необычных дел в своей практике 
+                    и что особую роль в нем сыграет именно рождественский пудинг…
+                </div>
+                <div class="iconBody">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wNzcgMTIuNzU2YS44MzMuODMzIDAgMCAwIDEuMTc5IDBsMi41LTIuNWEuODMzLjgzMyAwIDAgMCAwLTEuMTc5bC01LjgzMy01LjgzM2EuODMzLjgzMyAwIDAgMC0xLjE3OSAwbC0yLjUgMi41YS44MzMuODMzIDAgMCAwIDAgMS4xNzlsNS44MzMgNS44MzN6bS00LjA2NS02LjQyMyAxLjMyMS0xLjMyMSA0LjY1NSA0LjY1NS0xLjMyMSAxLjMyMS00LjY1NS00LjY1NXoiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzMy44MzMgMCAwIDAgLjc4NS4yMmwxMi4wODMtMi45MTZhLjgzMy44MzMgMCAwIDAgLjYyMi0uNjQ3bDEuMjUtNi4yNWEuODM0LjgzNCAwIDAgMC0uMjI4LS43NTJsLTQuMTY3LTQuMTY3YS44MzMuODMzIDAgMCAwLS43NTItLjIyOGwtNi4yNSAxLjI1YS44MzMuODMzIDAgMCAwLS42NDcuNjIyTDMuMDIzIDE5Ljk3YS44MzMuODMzIDAgMCAwIC4yMjEuNzg1em0xLjcyLTEuNzIgMi40NzEtMTAuMjQgNS4yOTEtMS4wNTggMy41MzYgMy41MzYtMS4wNTggNS4yOS0xMC4yNCAyLjQ3M3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzNS44MzUgMCAwIDAgMS4xOCAwbDYuMzMyLTYuMzMxYS44MzUuODM1IDAgMCAwLTEuMTgtMS4xOGwtNi4zMzIgNi4zM2EuODM1LjgzNSAwIDAgMCAwIDEuMTh6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNSAxMy4zMzNhLjgzMy44MzMgMCAxIDEgMC0xLjY2Ni44MzMuODMzIDAgMCAxIDAgMS42NjZ6TTkgMTIuNWEyLjUgMi41IDAgMSAwIDUgMCAyLjUgMi41IDAgMCAwLTUgMHoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                    <a>Агата Кристи</a>
+                </div>
+                <div class="iconBody">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                    <a>Максим Сергеев</a>          
+                </div>
+                <div class="iconBody">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjY2NiA3YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaDEwYS44MzMuODMzIDAgMSAxIDAgMS42NjZoLTEwQS44MzMuODMzIDAgMCAxIDguNjY2IDdaTTQuNSA3YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaC44MzRhLjgzMy44MzMgMCAwIDEgMCAxLjY2NmgtLjgzNEEuODMzLjgzMyAwIDAgMSA0LjUgN1ptMCA1YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaC44MzRhLjgzMy44MzMgMCAwIDEgMCAxLjY2NmgtLjgzNEEuODMzLjgzMyAwIDAgMSA0LjUgMTJabTAgNWMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM2guODM0YS44MzMuODMzIDAgMCAxIDAgMS42NjZoLS44MzRBLjgzMy44MzMgMCAwIDEgNC41IDE3Wm00LjE2Ni01YzAtLjQ2LjM3My0uODMzLjgzMy0uODMzaDEwYS44MzMuODMzIDAgMSAxIDAgMS42NjZoLTEwQS44MzMuODMzIDAgMCAxIDguNjY2IDEyWm0wIDVjMC0uNDYuMzczLS44MzMuODMzLS44MzNoMTBhLjgzMy44MzMgMCAxIDEgMCAxLjY2NmgtMTBBLjgzMy44MzMgMCAwIDEgOC42NjYgMTdaIiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                    <div style="color: #99a9ba;">Цикл «<a>Эркюль Пуаро</a>»</div><div style="color: #fff;">&nbsp (33)</div>          
+                </div>
+                <div class="iconBody">
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjOTlBOUJBIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGZpbGw9IiM5OUE5QkEiPjxwYXRoIGQ9Ik0xNiAyLjR2My4yTTggMi40djMuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuOCIgZmlsbD0iIzk5QTlCQSIgLz48cGF0aCBkPSJNNCAxMGgxNiIgc3Ryb2tlLXdpZHRoPSIxLjgiIGZpbGw9IiM5OUE5QkEiIC8+PGNpcmNsZSBjeD0iMTUuNSIgY3k9IjE1LjUiIHI9IjEiIGZpbGw9IiM5OUE5QkEiIC8+PC9nPjxwYXRoIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE2IDEuNWEuOS45IDAgMCAxIC45Ljl2Ljc5MWMuNTMyLjA2NyAxLjAxMi4xODcgMS40NjEuNDE2YTQuNjUgNC42NSAwIDAgMSAyLjAzMiAyLjAzMmMuMjguNTUuMzk3IDEuMTQ0LjQ1MyAxLjgyNS4wNTQuNjYyLjA1NCAxLjQ4LjA1NCAyLjQ5N3Y0LjA3OGMwIDEuMDE3IDAgMS44MzUtLjA1NCAyLjQ5Ny0uMDU2LjY4MS0uMTczIDEuMjc2LS40NTMgMS44MjVhNC42NSA0LjY1IDAgMCAxLTIuMDMyIDIuMDMyYy0uNTQ5LjI4LTEuMTQ0LjM5Ny0xLjgyNS40NTMtLjY2Mi4wNTQtMS40OC4wNTQtMi40OTcuMDU0SDkuOTZjLTEuMDE3IDAtMS44MzUgMC0yLjQ5Ny0uMDU0LS42ODEtLjA1Ni0xLjI3Ni0uMTczLTEuODI1LS40NTNhNC42NSA0LjY1IDAgMCAxLTIuMDMyLTIuMDMyYy0uMjgtLjU0OS0uMzk3LTEuMTQ0LS40NTMtMS44MjUtLjA1NC0uNjYyLS4wNTQtMS40OC0uMDU0LTIuNDk3VjkuOTZjMC0xLjAxNyAwLTEuODM1LjA1NC0yLjQ5Ny4wNTYtLjY4MS4xNzMtMS4yNzYuNDUzLTEuODI1YTQuNjUgNC42NSAwIDAgMSAyLjAzMi0yLjAzMmMuNDUtLjIyOS45MjktLjM1IDEuNDYxLS40MTZWMi40YS45LjkgMCAxIDEgMS44IDB2LjcwM2MuMzI3LS4wMDMuNjgtLjAwMyAxLjA2MS0uMDAzaDQuMDc4Yy4zOCAwIC43MzQgMCAxLjA2MS4wMDNWMi40YS45LjkgMCAwIDEgLjktLjl6TTcuMSA1LjAxdi41OWEuOS45IDAgMSAwIDEuOCAwdi0uNjk3QzkuMjI1IDQuOSA5LjU4OSA0LjkgMTAgNC45aDRjLjQxMSAwIC43NzUgMCAxLjEuMDAzVjUuNmEuOS45IDAgMSAwIDEuOCAwdi0uNTljLjI3OC4wNS40NzguMTE2LjY0NC4yLjUzNi4yNzQuOTcyLjcxIDEuMjQ1IDEuMjQ2LjEzLjI1My4yMTYuNTg1LjI2MyAxLjE1NC4wMzMuNDAxLjA0My44OC4wNDYgMS40OUg0LjkwMmMuMDAzLS42MS4wMTMtMS4wODkuMDQ2LTEuNDkuMDQ3LS41Ny4xMzQtLjkuMjYzLTEuMTU0YTIuODUgMi44NSAwIDAgMSAxLjI0NS0xLjI0NSAyLjIzIDIuMjMgMCAwIDEgLjY0NC0uMnpNNC45IDEwLjloMTQuMlYxNGMwIDEuMDY1IDAgMS44MS0uMDQ4IDIuMzktLjA0Ny41Ny0uMTM0LjktLjI2MyAxLjE1NGEyLjg1IDIuODUgMCAwIDEtMS4yNDUgMS4yNDVjLS4yNTMuMTMtLjU4NS4yMTYtMS4xNTQuMjYzLS41OC4wNDctMS4zMjUuMDQ4LTIuMzkuMDQ4aC00Yy0xLjA2NSAwLTEuODEgMC0yLjM5LS4wNDgtLjU3LS4wNDctLjktLjEzNC0xLjE1NC0uMjYzYTIuODUgMi44NSAwIDAgMS0xLjI0NS0xLjI0NWMtLjEzLS4yNTMtLjIxNi0uNTg1LS4yNjMtMS4xNTQtLjA0Ny0uNTgtLjA0OC0xLjMyNS0uMDQ4LTIuMzl6TTE1LjUgMTdhMS41IDEuNSAwIDEgMCAwLTMgMS41IDEuNSAwIDAgMCAwIDN6IiBmaWxsPSIjOTlBOUJBIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIC8+PC9zdmc+" alt="">
+                    <div style="color: #99a9ba;">Добавлено </div><div div style="color: #fff;">&nbsp 16 марта 2022</div>
+                </div>
+                <h3>Другие озвучки</h3>
+                <div>
+                    <img class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                    <a>Илья Кривошеев </a> 
+                </div>
+                <div style="display: flex; gap: 10px;"><h3>Комментарии </h3><h3 style="color: #99a9ba; flex-basis: 70%;">7</h3><img class="bll" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiNmZmYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjU3OSA2LjEzNGE3LjY2NyA3LjY2NyAwIDAgMSAxMy4wODggNS40MjJjMCAzLjc0MS44IDYuMDczIDEuNTQ0IDcuNDM3YTYuNzUgNi43NSAwIDAgMCAuOTk0IDEuNDA2IDMuNDg3IDMuNDg3IDAgMCAwIC4zNTUuMzI4bC4wMDUuMDAzQTEgMSAwIDAgMSAyMiAyMi41NTZIMmExIDEgMCAwIDEtLjU1Ni0xLjgzMWgtLjAwMWwtLjAwMi4wMDItLjAwNC4wMDItLjAwMy4wMDIuMDA2LS4wMDRjLjAxLS4wMDguMDMyLS4wMjQuMDYzLS4wNS4wNjItLjA1Mi4xNjQtLjE0My4yOTItLjI3OC4yNTYtLjI3LjYyLS43Mi45OTQtMS40MDYuNzQ0LTEuMzY0IDEuNTQ0LTMuNjk2IDEuNTQ0LTcuNDM3IDAtMi4wMzQuODA4LTMuOTg0IDIuMjQ2LTUuNDIyWk00LjE4OCAyMC41NTZoMTUuNjI0YTEwLjE4MiAxMC4xODIgMCAwIDEtLjM1Ny0uNjA1Yy0uOTIyLTEuNjkxLTEuNzg4LTQuMzYtMS43ODgtOC4zOTVhNS42NjcgNS42NjcgMCAxIDAtMTEuMzM0IDBjMCA0LjAzNi0uODY2IDYuNzA0LTEuNzg4IDguMzk1LS4xMi4yMTgtLjIzOS40Mi0uMzU3LjYwNVptNS4zODkgNC41NzlhMSAxIDAgMCAxIDEuMzY2LjM2MyAxLjIyMSAxLjIyMSAwIDAgMCAyLjExNSAwIDEgMSAwIDAgMSAxLjczIDEuMDA0IDMuMjIyIDMuMjIyIDAgMCAxLTUuNTc1IDAgMSAxIDAgMCAxIC4zNjQtMS4zNjdaIiBmaWxsPSIjZmZmIiAvPjxwYXRoIGQ9Ik0zMCAxM2gtM3YtM2MwLS4zNjctLjMtLjY2Ny0uNjY2LS42NjdoLS42NjdjLS4zNjcgMC0uNjY3LjMtLjY2Ny42Njd2M2gtM2MtLjM2NiAwLS42NjYuMy0uNjY2LjY2N3YuNjY2YzAgLjM2Ny4zLjY2Ny42NjYuNjY3aDN2M2MwIC4zNjcuMy42NjcuNjY3LjY2N2guNjY2Yy4zNjcgMCAuNjY3LS4zLjY2Ny0uNjY3di0zaDNjLjM2NyAwIC42NjctLjMuNjY3LS42Njd2LS42NjZjMC0uMzY3LS4zLS42NjctLjY2Ny0uNjY3WiIgZmlsbD0iI2ZmZiIgLz48L3N2Zz4=" alt=""></div>
+                <div class="comm_e">
+                    <div>Для написания комментария&nbsp;<a style="font-weight: 400;">авторизуйтесь</a>.</div>
+                </div>
+                <div>
+                    <div class="comm_sw">
+                        <div style="color: #99a9ba;">Сортировать: </div>
+                        <a>По порядку</a>
+                        <a style="color: #99a9ba;">Новые</a>
+                        <a style="color: #99a9ba;">Лучшие</a>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://k3.knigavuhe.org/1/avatars/272983/a_50.jpg?1665610160" alt="">
+                            <a style="color:#46b950; margin-left: 0;">Полина Петрова</a>
+                            <div style="color: #99a9ba;">7 июля 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiMxZGE1M2YiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiMxZGE1M2YiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #1da53f;">2</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            Прекрасный чтец! Сплошное удовольствие слушать ))
+                        </div>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://k3.knigavuhe.org/1/avatars/272983/a_50.jpg?1665610160" alt="">
+                            <a style="color:#46b950; margin-left: 0;">Полина Петрова</a>
+                            <div style="color: #99a9ba;">7 июля 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiMxZGE1M2YiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiMxZGE1M2YiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #1da53f;">2</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            И история о рождественском пудинге просто очаровательна! ))
+                        </div>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://k3.knigavuhe.org/1/avatars/151438/a_50.jpg?1607335132" alt="">
+                            <a style="color:#9167e4; margin-left: 0;">стрекозка</a>
+                            <div style="color: #99a9ba;">16 июля 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiMxZGE1M2YiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiMxZGE1M2YiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #1da53f;">1</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            Озвучка супер!
+                        </div>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://knigavuhe.org/images/user50.png?1" alt="">
+                            <a style="color:#d152d1; margin-left: 0;">Mishlena</a>
+                            <div style="color: #99a9ba;">23 сентября 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiMxZGE1M2YiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiMxZGE1M2YiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #1da53f;">1</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            История о братьях-близнецах оказывается такая простая и очевидная.. В сериале добавили персонажей и  дополнительных мотивов...
+                        </div>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://knigavuhe.org/images/user50.png?1" alt="">
+                            <a style="color:#d152d1; margin-left: 0;">Mishlena</a>
+                            <div style="color: #99a9ba;">23 сентября 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            А история с миллиардером.. В сериале там кучу времени на описание фабрики и что там делают -уделили. И придумали другое что, для хронометража, видимо... А все просто и банально)))                        </div>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://knigavuhe.org/images/user50.png?1" alt="">
+                            <a style="color:#d152d1; margin-left: 0;">Mishlena</a>
+                            <div style="color: #99a9ba;">23 сентября 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            Не очень поняла зачем в этот сборник рассказов добавили мисс Марпл.. Я все ждала, что появится Пуаро и они познакомятся, но увы(((                        </div>
+                    </div>
+                    <div>
+                        <div class="comm iconBody">
+                            <img class="av" src="https://knigavuhe.org/images/user50.png?1" alt="">
+                            <a style="color:#d152d1; margin-left: 0;">Mishlena</a>
+                            <div style="color: #99a9ba;">26 сентября 2023</div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiMxZGE1M2YiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiMxZGE1M2YiIC8+PC9zdmc+" alt="">
+                                    <div style="color: #1da53f;">1</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="iconBody" style="margin-top: 0;">
+                                    <img style="height: 20px;" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iIzk5QTlCQSIgLz48L3N2Zz4=" alt="">
+                                    <div style="color: #99a9ba;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c_text">
+                            В рассказе про испанский сундук автор упоминула смерть Гастингса. Печально.  Могу ошибаться, но в сериале, он при этой истории был.. Если подумать, то в сериале он во многих историях был, хотя его и не должно быть...                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rMeny">
+                <div class="btms">
+                    <div class="btm" style="width: 130px;">
+                        <div class="iconBody">
+                            <img style="margin-left: 15px;" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAyLjRhLjg3Ljg3IDAgMCAxIC43ODMuNTFsMi40OTMgNS4yODcgNS41NzguODUzYy4zMjguMDUuNjAxLjI5Mi43MDMuNjIyYS45NDMuOTQzIDAgMCAxLS4yMi45MzZMMTcuMyAxNC43MjFsLjk1MyA1LjgxMWEuOTM0LjkzNCAwIDAgMS0uMzQ4Ljg5NC44NC44NCAwIDAgMS0uOTE5LjA2OUwxMiAxOC43NWwtNC45ODcgMi43NDVhLjg0Ljg0IDAgMCAxLS45Mi0uMDcuOTM0LjkzNCAwIDAgMS0uMzQ3LS44OTNsLjk1My01LjgxLTQuMDM1LTQuMTE0YS45NDMuOTQzIDAgMCAxLS4yMjEtLjkzNi44ODUuODg1IDAgMCAxIC43MDQtLjYyMmw1LjU3Ny0uODUzIDIuNDkzLTUuMjg4QS44Ny44NyAwIDAgMSAxMiAyLjRabTAgMi45NzctMS45MTQgNC4wNTlhLjg3Ny44NzcgMCAwIDEtLjY1Ny41bC00LjI4MS42NTQgMy4wOTcgMy4xNThjLjIwNi4yMS4zLjUxMi4yNTIuODA5bC0uNzMxIDQuNDYgMy44MjgtMi4xMDdhLjgzOC44MzggMCAwIDEgLjgxMiAwbDMuODI4IDIuMTA3LS43My00LjQ2YS45NC45NCAwIDAgMSAuMjUtLjgwOWwzLjA5OC0zLjE1OC00LjI4Mi0uNjU1YS44NzcuODc3IDAgMCAxLS42NTYtLjVMMTIgNS4zNzhaIiBmaWxsPSIjZmZmIiAvPjwvc3ZnPg==" alt="">
+                            <div style="font-size: 13px; font-weight: 600; margin-left: 10px; margin-top: 4px;">На полку</div>
+                        </div>
+                    </div>  
+                    <div class="btm backb" style="width: 56px; background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4zNzYgMy4zMmEuODMuODMgMCAwIDEgLjc1OS0uNDg3Yy44OCAwIDEuNzI1LjM0NSAyLjM0OC45NTlhMy4yNSAzLjI1IDAgMCAxIC45NzMgMi4zMTR2Mi40NTVoMy44NjRhMi41MSAyLjUxIDAgMCAxIDEuOTAzLjg0MyAyLjQ0MyAyLjQ0MyAwIDAgMSAuNTgyIDEuOThsLTEuMTQ1IDcuMzYzYTIuNDQ3IDIuNDQ3IDAgMCAxLS44NSAxLjUwMiAyLjUxMyAyLjUxMyAwIDAgMS0xLjYzNi41ODRINS4zMjRhMi41MSAyLjUxIDAgMCAxLTEuNzYxLS43MTkgMi40MzcgMi40MzcgMCAwIDEtLjczLTEuNzM1VjEyLjY1YzAtLjY1LjI2My0xLjI3NS43My0xLjczNWEyLjUxIDIuNTEgMCAwIDEgMS43Ni0uNzE5aDEuOTUybDMuMTAxLTYuODc4Wm0tMS43MzIgNy44NjkgMi45OTUtNi42NDJjLjI1LjA3OS40OC4yMTYuNjcuNDAyLjMxMS4zMDcuNDg2LjcyMy40ODYgMS4xNTdWOS4zOGMwIC40NTIuMzcyLjgxOC44My44MThoNC43MDlhLjg0Ljg0IDAgMCAxIC42MzUuMjgxLjgxMy44MTMgMCAwIDEgLjE5NS42NmwtMS4xNDYgNy4zNjRhLjgxNS44MTUgMCAwIDEtLjI4My41LjgzOC44MzggMCAwIDEtLjU0Ny4xOTVIOC42NDRWMTEuMTlabS0xLjY2IDguMDA4di03LjM2NGgtMS42NmEuODM2LjgzNiAwIDAgMC0uNTg3LjI0LjgxMi44MTIgMCAwIDAtLjI0My41Nzl2NS43MjdjMCAuMjE3LjA4Ny40MjUuMjQzLjU3OC4xNTYuMTU0LjM2Ny4yNC41ODcuMjRoMS42NloiIGZpbGw9IiNmZmYiIC8+PC9zdmc+');"></div>
+                    <div class="btm backb" style="width: 56px; background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOS4wNzYgNC43MjhhMS4wOTcgMS4wOTcgMCAwIDAtLjcyOC0uMjU4aC0xLjQwMXY3LjM2M2gxLjQwMWMuMjY3LjAwNS41MjUtLjA4Ny43MjgtLjI1OC4xOS0uMTYuMzE3LS4zODEuMzYxLS42MjNWNS4zNTFhMS4wNjkgMS4wNjkgMCAwIDAtLjM2MS0uNjIzWm0tMy43OSA3Ljc1LTIuOTk0IDYuNjQxYTEuNjY1IDEuNjY1IDAgMCAxLS42Ny0uNDAyIDEuNjI0IDEuNjI0IDAgMCAxLS40ODYtMS4xNTd2LTMuMjcyYS44MjQuODI0IDAgMCAwLS44My0uODE5SDUuNTk3YS44NC44NCAwIDAgMS0uNjM1LS4yOC44MTUuODE1IDAgMCAxLS4xOTUtLjY2bDEuMTQ2LTcuMzY0YS44MTUuODE1IDAgMCAxIC4yODMtLjUuODM4LjgzOCAwIDAgMSAuNTQ3LS4xOTVoOC41NDR2OC4wMDhabTMuMDQtOS42NDVhMi43NzUgMi43NzUgMCAwIDEgMS44MzEuNjUzYy41MS40MzIuODQzIDEuMDM1LjkzMyAxLjY5MmEuODA1LjgwNSAwIDAgMSAuMDA4LjExdjUuNzI3YS44MDYuODA2IDAgMCAxLS4wMDguMTEgMi42OTggMi42OTggMCAwIDEtLjkzMyAxLjY5MmMtLjUwOS40My0xLjE2LjY2Mi0xLjgzLjY1MmgtMS42N2wtMy4xMDIgNi44NzhhLjgzLjgzIDAgMCAxLS43NTkuNDg2IDMuMzUgMy4zNSAwIDAgMS0yLjM0OC0uOTU4IDMuMjQ5IDMuMjQ5IDAgMCAxLS45NzItMi4zMTV2LTIuNDU0SDUuNjFhMi41MiAyLjUyIDAgMCAxLTEuMDQyLS4yMTUgMi40ODggMi40ODggMCAwIDEtLjg2LS42MjkgMi40MiAyLjQyIDAgMCAxLS41ODMtMS45NzlMNC4yNzIgNC45MmEyLjQ0IDIuNDQgMCAwIDEgLjg0OS0xLjUwMiAyLjUxMyAyLjUxMyAwIDAgMSAxLjYzNi0uNTg1aDExLjU3WiIgZmlsbD0iI2ZmZiIgLz48L3N2Zz4=');"></div><div style="color: #99a9ba;font-weight: 700;">&nbsp 60</div><div style="text-align: center; color: #99a9ba;font-weight: 700;">27</div><div style="text-align: center;color: #99a9ba;font-weight: 700;" >1</div>
+                </div>
+                <h3 style="padding-left: 16px;">Рекомендации</h3>
+                <div class="rec">
+                    <img style="border-radius: 2px; max-height: 70px; width: 49px;" src="https://k4.knigavuhe.org/2/covers/43176/1-4@2x.jpg?1">
+                    <div>
+                        <a class="bT">Вечеринка в Хэллоуин</a>
+                        <div style="margin-top: 8px;">
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wNzcgMTIuNzU2YS44MzMuODMzIDAgMCAwIDEuMTc5IDBsMi41LTIuNWEuODMzLjgzMyAwIDAgMCAwLTEuMTc5bC01LjgzMy01LjgzM2EuODMzLjgzMyAwIDAgMC0xLjE3OSAwbC0yLjUgMi41YS44MzMuODMzIDAgMCAwIDAgMS4xNzlsNS44MzMgNS44MzN6bS00LjA2NS02LjQyMyAxLjMyMS0xLjMyMSA0LjY1NSA0LjY1NS0xLjMyMSAxLjMyMS00LjY1NS00LjY1NXoiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzMy44MzMgMCAwIDAgLjc4NS4yMmwxMi4wODMtMi45MTZhLjgzMy44MzMgMCAwIDAgLjYyMi0uNjQ3bDEuMjUtNi4yNWEuODM0LjgzNCAwIDAgMC0uMjI4LS43NTJsLTQuMTY3LTQuMTY3YS44MzMuODMzIDAgMCAwLS43NTItLjIyOGwtNi4yNSAxLjI1YS44MzMuODMzIDAgMCAwLS42NDcuNjIyTDMuMDIzIDE5Ljk3YS44MzMuODMzIDAgMCAwIC4yMjEuNzg1em0xLjcyLTEuNzIgMi40NzEtMTAuMjQgNS4yOTEtMS4wNTggMy41MzYgMy41MzYtMS4wNTggNS4yOS0xMC4yNCAyLjQ3M3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzNS44MzUgMCAwIDAgMS4xOCAwbDYuMzMyLTYuMzMxYS44MzUuODM1IDAgMCAwLTEuMTgtMS4xOGwtNi4zMzIgNi4zM2EuODM1LjgzNSAwIDAgMCAwIDEuMTh6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNSAxMy4zMzNhLjgzMy44MzMgMCAxIDEgMC0xLjY2Ni44MzMuODMzIDAgMCAxIDAgMS42NjZ6TTkgMTIuNWEyLjUgMi41IDAgMSAwIDUgMCAyLjUgMi41IDAgMCAwLTUgMHoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                            <a class="b_rm">Агата Кристи </a>
+                        </div>      
+                        <div>                       
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                            <a class="b_rm">Егор Серов</a> 
+                        </div>
+                    </div>
+                    <img style="border-radius: 2px; max-height: 70px; width: 49px;" src="https://k4.knigavuhe.org/1/covers/43479/1-4@2x.jpg?1">
+                    <div>
+                        <a class="bT">После похорон</a>
+                        <div style="margin-top: 8px;">
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wNzcgMTIuNzU2YS44MzMuODMzIDAgMCAwIDEuMTc5IDBsMi41LTIuNWEuODMzLjgzMyAwIDAgMCAwLTEuMTc5bC01LjgzMy01LjgzM2EuODMzLjgzMyAwIDAgMC0xLjE3OSAwbC0yLjUgMi41YS44MzMuODMzIDAgMCAwIDAgMS4xNzlsNS44MzMgNS44MzN6bS00LjA2NS02LjQyMyAxLjMyMS0xLjMyMSA0LjY1NSA0LjY1NS0xLjMyMSAxLjMyMS00LjY1NS00LjY1NXoiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzMy44MzMgMCAwIDAgLjc4NS4yMmwxMi4wODMtMi45MTZhLjgzMy44MzMgMCAwIDAgLjYyMi0uNjQ3bDEuMjUtNi4yNWEuODM0LjgzNCAwIDAgMC0uMjI4LS43NTJsLTQuMTY3LTQuMTY3YS44MzMuODMzIDAgMCAwLS43NTItLjIyOGwtNi4yNSAxLjI1YS44MzMuODMzIDAgMCAwLS42NDcuNjIyTDMuMDIzIDE5Ljk3YS44MzMuODMzIDAgMCAwIC4yMjEuNzg1em0xLjcyLTEuNzIgMi40NzEtMTAuMjQgNS4yOTEtMS4wNTggMy41MzYgMy41MzYtMS4wNTggNS4yOS0xMC4yNCAyLjQ3M3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzNS44MzUgMCAwIDAgMS4xOCAwbDYuMzMyLTYuMzMxYS44MzUuODM1IDAgMCAwLTEuMTgtMS4xOGwtNi4zMzIgNi4zM2EuODM1LjgzNSAwIDAgMCAwIDEuMTh6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNSAxMy4zMzNhLjgzMy44MzMgMCAxIDEgMC0xLjY2Ni44MzMuODMzIDAgMCAxIDAgMS42NjZ6TTkgMTIuNWEyLjUgMi41IDAgMSAwIDUgMCAyLjUgMi41IDAgMCAwLTUgMHoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                            <a class="b_rm">Агата Кристи </a>
+                        </div>      
+                        <div>                       
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                            <a class="b_rm">Егор Серов</a> 
+                        </div>
+                    </div>
+                    <img style="border-radius: 2px; max-height: 70px; width: 49px;" src="https://k9.knigavuhe.org/1/covers/43491/1-4@2x.jpg?1">
+                    <div>
+                        <a class="bT">Подвиги Геракла</a>
+                        <div style="margin-top: 8px;">
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wNzcgMTIuNzU2YS44MzMuODMzIDAgMCAwIDEuMTc5IDBsMi41LTIuNWEuODMzLjgzMyAwIDAgMCAwLTEuMTc5bC01LjgzMy01LjgzM2EuODMzLjgzMyAwIDAgMC0xLjE3OSAwbC0yLjUgMi41YS44MzMuODMzIDAgMCAwIDAgMS4xNzlsNS44MzMgNS44MzN6bS00LjA2NS02LjQyMyAxLjMyMS0xLjMyMSA0LjY1NSA0LjY1NS0xLjMyMSAxLjMyMS00LjY1NS00LjY1NXoiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzMy44MzMgMCAwIDAgLjc4NS4yMmwxMi4wODMtMi45MTZhLjgzMy44MzMgMCAwIDAgLjYyMi0uNjQ3bDEuMjUtNi4yNWEuODM0LjgzNCAwIDAgMC0uMjI4LS43NTJsLTQuMTY3LTQuMTY3YS44MzMuODMzIDAgMCAwLS43NTItLjIyOGwtNi4yNSAxLjI1YS44MzMuODMzIDAgMCAwLS42NDcuNjIyTDMuMDIzIDE5Ljk3YS44MzMuODMzIDAgMCAwIC4yMjEuNzg1em0xLjcyLTEuNzIgMi40NzEtMTAuMjQgNS4yOTEtMS4wNTggMy41MzYgMy41MzYtMS4wNTggNS4yOS0xMC4yNCAyLjQ3M3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzNS44MzUgMCAwIDAgMS4xOCAwbDYuMzMyLTYuMzMxYS44MzUuODM1IDAgMCAwLTEuMTgtMS4xOGwtNi4zMzIgNi4zM2EuODM1LjgzNSAwIDAgMCAwIDEuMTh6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNSAxMy4zMzNhLjgzMy44MzMgMCAxIDEgMC0xLjY2Ni44MzMuODMzIDAgMCAxIDAgMS42NjZ6TTkgMTIuNWEyLjUgMi41IDAgMSAwIDUgMCAyLjUgMi41IDAgMCAwLTUgMHoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                            <a class="b_rm">Агата Кристи</a>
+                        </div>      
+                        <div>                       
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                            <a class="b_rm">Егор Серов</a> 
+                        </div>
+                    </div>
+                    <img style="border-radius: 2px; max-height: 70px; width: 49px;" src="https://k14.knigavuhe.org/2/covers/43188/1-4@2x.jpg?1">
+                    <div>
+                        <a class="bT">Убийство в проходном дворе</a>
+                        <div style="margin-top: 8px;">
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wNzcgMTIuNzU2YS44MzMuODMzIDAgMCAwIDEuMTc5IDBsMi41LTIuNWEuODMzLjgzMyAwIDAgMCAwLTEuMTc5bC01LjgzMy01LjgzM2EuODMzLjgzMyAwIDAgMC0xLjE3OSAwbC0yLjUgMi41YS44MzMuODMzIDAgMCAwIDAgMS4xNzlsNS44MzMgNS44MzN6bS00LjA2NS02LjQyMyAxLjMyMS0xLjMyMSA0LjY1NSA0LjY1NS0xLjMyMSAxLjMyMS00LjY1NS00LjY1NXoiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzMy44MzMgMCAwIDAgLjc4NS4yMmwxMi4wODMtMi45MTZhLjgzMy44MzMgMCAwIDAgLjYyMi0uNjQ3bDEuMjUtNi4yNWEuODM0LjgzNCAwIDAgMC0uMjI4LS43NTJsLTQuMTY3LTQuMTY3YS44MzMuODMzIDAgMCAwLS43NTItLjIyOGwtNi4yNSAxLjI1YS44MzMuODMzIDAgMCAwLS42NDcuNjIyTDMuMDIzIDE5Ljk3YS44MzMuODMzIDAgMCAwIC4yMjEuNzg1em0xLjcyLTEuNzIgMi40NzEtMTAuMjQgNS4yOTEtMS4wNTggMy41MzYgMy41MzYtMS4wNTggNS4yOS0xMC4yNCAyLjQ3M3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjI0NCAyMC43NTZhLjgzNS44MzUgMCAwIDAgMS4xOCAwbDYuMzMyLTYuMzMxYS44MzUuODM1IDAgMCAwLTEuMTgtMS4xOGwtNi4zMzIgNi4zM2EuODM1LjgzNSAwIDAgMCAwIDEuMTh6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNSAxMy4zMzNhLjgzMy44MzMgMCAxIDEgMC0xLjY2Ni44MzMuODMzIDAgMCAxIDAgMS42NjZ6TTkgMTIuNWEyLjUgMi41IDAgMSAwIDUgMCAyLjUgMi41IDAgMCAwLTUgMHoiIGZpbGw9IiM5OUE5QkEiIC8+PC9zdmc+" alt="">
+                            <a class="b_rm">Агата Кристи </a>
+                        </div>      
+                        <div>                       
+                            <img height="16px" class="i" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiM5OUE5QkEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjY0MyAyLjk3NmEzLjMzMyAzLjMzMyAwIDAgMSA1LjY5IDIuMzU3VjEyYTMuMzMzIDMuMzMzIDAgMSAxLTYuNjY2IDBWNS4zMzNjMC0uODg0LjM1LTEuNzMyLjk3Ni0yLjM1N3ptMi4zNTcuNjlhMS42NjcgMS42NjcgMCAwIDAtMS42NjcgMS42NjdWMTJhMS42NjcgMS42NjcgMCAwIDAgMy4zMzQgMFY1LjMzM0ExLjY2NyAxLjY2NyAwIDAgMCAxMiAzLjY2N3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjE2NyA5LjVjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM1YxMmE1IDUgMCAxIDAgMTAgMHYtMS42NjdhLjgzMy44MzMgMCAwIDEgMS42NjcgMFYxMmE2LjY2NyA2LjY2NyAwIDAgMS0xMy4zMzQgMHYtMS42NjdjMC0uNDYuMzczLS44MzMuODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTIgMTdjLjQ2IDAgLjgzMy4zNzMuODMzLjgzM3YzLjMzNGEuODMzLjgzMyAwIDAgMS0xLjY2NiAwdi0zLjMzNGMwLS40Ni4zNzMtLjgzMy44MzMtLjgzM3oiIGZpbGw9IiM5OUE5QkEiIC8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjgzMyAyMS4xNjdjMC0uNDYuMzczLS44MzQuODM0LS44MzRoNi42NjZhLjgzMy44MzMgMCAwIDEgMCAxLjY2N0g4LjY2N2EuODMzLjgzMyAwIDAgMS0uODM0LS44MzN6IiBmaWxsPSIjOTlBOUJBIiAvPjwvc3ZnPg==" alt="">
+                            <a class="b_rm">Егор Серов</a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="add"></div>
+                    <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+            </div>
+        </div>
+        <div class="footerS">    
+            <a style="color: #fff; margin-right: 24px;">О сайте</a>   
+            <a style="color: #fff; margin-right: 24px;">Блог</a>   
+            <a style="color: #fff; margin-right: 24px;">Мобильная версия</a>   
+            <a style="color: #4eabed; margin-right: 24px;">Старый дизайн</a>
+            <div class="f_menu">
+                <div style="color: #99a9ba;">Для связи:&nbsp;</div>
+                <a style="font-weight: 400;"> admin@knigavuhe.ru</a>
+                <div style="color: #99a9ba;">&nbsp;|&nbsp;</div>
+                <div style="color: #fff;">книга</div>
+                <div style="color: #f03b6d;">в</div>
+                <div style="color: #54a7aa;">ухе</div>
+                <div style="color: #99a9ba;">, 2024</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
